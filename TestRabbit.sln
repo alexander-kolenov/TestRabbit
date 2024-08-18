@@ -5,9 +5,9 @@ VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose\docker-compose.dcproj", "{E3FD3F70-2B83-4CCB-A178-F84847D078D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModels", "DomainModels\DomainModels.csproj", "{8F434D4C-26DF-462E-A57E-CAB0F70F1DAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainModels", "DomainModels\DomainModels.csproj", "{8F434D4C-26DF-462E-A57E-CAB0F70F1DAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRabbit", "MyRabbit\MyRabbit.csproj", "{469CBC16-20C4-4433-8463-EEE830586B88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRabbit", "MyRabbit\MyRabbit.csproj", "{469CBC16-20C4-4433-8463-EEE830586B88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SomeConsumer", "SomeConsumer\SomeConsumer.csproj", "{DEC88814-676D-4132-AE72-E78096040544}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -19,20 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SomeProducer", "SomeProduce
 		{8F434D4C-26DF-462E-A57E-CAB0F70F1DAD} = {8F434D4C-26DF-462E-A57E-CAB0F70F1DAD}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BB705A0-8739-4835-924A-37691B099883}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEC88814-676D-4132-AE72-E78096040544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEC88814-676D-4132-AE72-E78096040544}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEC88814-676D-4132-AE72-E78096040544}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEC88814-676D-4132-AE72-E78096040544}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3FD3F70-2B83-4CCB-A178-F84847D078D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3FD3F70-2B83-4CCB-A178-F84847D078D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3FD3F70-2B83-4CCB-A178-F84847D078D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +42,14 @@ Global
 		{469CBC16-20C4-4433-8463-EEE830586B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469CBC16-20C4-4433-8463-EEE830586B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469CBC16-20C4-4433-8463-EEE830586B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC88814-676D-4132-AE72-E78096040544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC88814-676D-4132-AE72-E78096040544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC88814-676D-4132-AE72-E78096040544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC88814-676D-4132-AE72-E78096040544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C109CD18-CB7B-44F4-886C-82B65E998AB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

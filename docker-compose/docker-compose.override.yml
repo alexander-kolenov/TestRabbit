@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+
+  someconsumer:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "${SOME_CONSUMER_EXT_PORT}:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+
+  someproducer:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "${SOME_PRODUCER_EXT_PORT}:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=rmuser
+      - RABBITMQ_DEFAULT_PASS=rmpassword
+    ports:
+      - ${RABBIT_EXT_PORT}:15672
+      #- RABBIT_AMQP:5672
+    volumes:
+      - ${APPDATA}/rabbitmq:/var/lib/rabbitmq

@@ -1,0 +1,41 @@
+version: '3.8'
+
+networks:
+  net:
+    name: ${NETWORK?'All services expected to be run in same network'}
+
+
+services:
+
+
+  rabbitmq:
+    container_name: RabbitMq
+    image: rabbitmq:3.10.7-management
+    hostname: rabbitmq
+    restart: always
+    networks:
+      - net
+
+
+  someconsumer:
+    container_name: SomeConsumer
+    image: ${DOCKER_REGISTRY-}someconsumer
+    build:
+      context: ..
+      dockerfile: ./SomeConsumer/Dockerfile
+    networks:
+      - net
+    environment:
+      - ASPNETCORE_URLS=https://+:443
+
+  someproducer:
+    container_name: SomeProducer
+    image: ${DOCKER_REGISTRY-}someproducer
+    build:
+      context: ..
+      dockerfile: ./SomeProducer/Dockerfile
+    networks:
+      - net
+    environment:
+      - ASPNETCORE_URLS=https://+:443
+

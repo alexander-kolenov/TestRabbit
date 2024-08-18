@@ -13,9 +13,9 @@ public class RabbitMqService : IRabbitMqService
       var factory = new ConnectionFactory()
       {
          HostName = "rabbitmq",
-         ClientProvidedName = "someUser",
-         UserName = "someUser",
-         Password = "Password",
+         ClientProvidedName = Guid.NewGuid().ToString(),
+         UserName = "rmuser",
+         Password = "rmpassword",
          Port = 5672,
       };
       return factory;
@@ -53,6 +53,54 @@ public class RabbitMqService : IRabbitMqService
             basicProperties: null,
             body: body);
 
+      }
+   }
+
+   public IDisposable Consume(string queueName, Action<string> action)
+   {
+      var factory = CreateConnectionFactory();
+      var connection = factory.CreateConnection();
+      var channel = connection.CreateModel();
+      
+      channel.QueueDeclare(queue: queueName,
+                     durable: false,
+                     exclusive: false,
+                     autoDelete: false,
+                     arguments: null);
+
+      var consumer = new EventingBasicConsumer(channel);
+
+
+
+      consumer.Received += Consumer_Received;
+      channel.BasicConsume(queue: queueName,
+                           autoAck: true,
+                           consumer: consumer);
+      return new Disp(() =>
+      {
+         consumer.Received -= Consumer_Received;
+         channel.Dispose();
+         connection.Dispose();
+      });
+
+      void Consumer_Received (object? sender, BasicDeliverEventArgs e)
+      {
+         byte[] body = e.Body.ToArray();
+         var message = Encoding.UTF8.GetString(body);
+         action(message);
+      };
+   }
+
+
+
+   private record Disp(Action action)
+      : IDisposable
+   {
+      private bool isDisposed;
+      public void Dispose()
+      {
+         if(!isDisposed)
+            action();
       }
    }
 }

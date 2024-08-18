@@ -2,6 +2,17 @@ version: '3.8'
 
 services:
 
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=rmuser
+      - RABBITMQ_DEFAULT_PASS=rmpassword
+    ports:
+      - ${RABBIT_EXT_PORT}:15672
+      #- RABBIT_AMQP:5672
+    volumes:
+      - ${APPDATA}/rabbitmq:/var/lib/rabbitmq
+
+
   someconsumer:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -22,12 +33,8 @@ services:
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
 
-  rabbitmq:
+  someworker:
     environment:
-      - RABBITMQ_DEFAULT_USER=rmuser
-      - RABBITMQ_DEFAULT_PASS=rmpassword
-    ports:
-      - ${RABBIT_EXT_PORT}:15672
-      #- RABBIT_AMQP:5672
+      - DOTNET_ENVIRONMENT=Development
     volumes:
-      - ${APPDATA}/rabbitmq:/var/lib/rabbitmq
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro

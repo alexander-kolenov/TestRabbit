@@ -28,6 +28,7 @@ services:
     environment:
       - ASPNETCORE_URLS=https://+:443
 
+
   someproducer:
     container_name: SomeProducer
     image: ${DOCKER_REGISTRY-}someproducer
@@ -38,4 +39,14 @@ services:
       - net
     environment:
       - ASPNETCORE_URLS=https://+:443
+
+
+  someworker:
+    container_name: SomeWorker
+    image: ${DOCKER_REGISTRY-}someworker
+    build:
+      context: ..
+      dockerfile: SomeWorker/Dockerfile
+    networks:
+      - net
 
